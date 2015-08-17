@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Xiaolu.core.Utility
 {
-    class XiaoluConstants
+    public static class XiaoluConstants
     {
+        public static const string SPLIT_SYMBOL = ",";
     }
 }
