@@ -49,6 +49,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utility\XiaoluConstants.cs" />
+    <Compile Include="Utility\XiaoluStringUtility.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -8,6 +8,6 @@ namespace Xiaolu.core.Utility
 {
     public static class XiaoluConstants
     {
-        public static const string SPLIT_SYMBOL = ",";
+        public static string SPLIT_SYMBOL = ",";
     }
 }
