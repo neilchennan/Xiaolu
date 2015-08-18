@@ -14,12 +14,12 @@ namespace Xiaolu.Models.DAL
     
     public partial class User
     {
-        public string id { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
-        public Nullable<bool> gender { get; set; }
-        public Nullable<System.DateTime> birthday { get; set; }
-        public Nullable<bool> level { get; set; }
-        public string xiaolu_usercol { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public Nullable<bool> Gender { get; set; }
+        public Nullable<System.DateTime> Birthday { get; set; }
+        public Nullable<bool> Level { get; set; }
+        public string Password { get; set; }
     }
 }
