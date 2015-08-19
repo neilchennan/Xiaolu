@@ -13,10 +13,10 @@ namespace Xiaolu.Models.DAL
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class xiaoluEntities : DbContext
+    public partial class XiaoluEntities : DbContext
     {
-        public xiaoluEntities()
-            : base("name=xiaoluEntities")
+        public XiaoluEntities()
+            : base("name=XiaoluEntities")
         {
         }
     
