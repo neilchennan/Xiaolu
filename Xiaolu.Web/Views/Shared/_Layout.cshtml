@@ -1,49 +1,43 @@
 ﻿<!DOCTYPE html>
 <html lang="zh">
-    <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-        <meta charset="utf-8" />
-        <title>@ViewBag.Title - 我的 ASP.NET MVC 应用程序</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width" />
-        @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
-    </head>
-    <body>
-        <header>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p class="site-title">@Html.ActionLink("将你的徽标放置在此处", "Index", "Home")</p>
-                </div>
-                <div class="float-right">
-                    <section id="login">
-                        @Html.Partial("_LoginPartial")
-                    </section>
-                    <nav>
-                        <ul id="menu">
-                            <li>@Html.ActionLink("主页", "Index", "Home")</li>
-                            <li>@Html.ActionLink("关于", "About", "Home")</li>
-                            <li>@Html.ActionLink("联系方式", "Contact", "Home")</li>
-                        </ul>
-                    </nav>
-                </div>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - 小鹿爱情 </title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @*@Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/modernizr")*@
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="~/ThirdParty/MiniUI3.6/miniui.js"></script>
+    <link href="~/ThirdParty/MiniUI3.6/themes/default/miniui.css" rel="stylesheet" />
+    <link href="~/ThirdParty/MiniUI3.6/themes/icons.css" rel="stylesheet" />
+</head>
+<body marginwidth="455">
+    <div id="layout1" class="mini-layout" style="width:100%;height:1080px" borderstyle="border:solid 0px #aaa;">
+        <div class="header" region="north" height="370px" showsplit="false" showheader="false" style="background-image: url(/Images/Xiaolu/bg.gif);border:0px">
+            <h1 style="margin:0;padding:15px;cursor:default;font-family:微软雅黑,黑体,宋体;">小鹿.爱情</h1>
+            <div style="position:absolute;top:18px;right:10px;">
+                <a class="mini-button mini-button-iconTop" iconcls="icon-add" onclick="onQuickClick" plain="true">快捷</a>
+                <a class="mini-button mini-button-iconTop" iconcls="icon-edit" onclick="onClick" plain="true">首页</a>
+                <a class="mini-button mini-button-iconTop" iconcls="icon-date" onclick="onClick" plain="true">消息</a>
+                <a class="mini-button mini-button-iconTop" iconcls="icon-edit" onclick="onClick" plain="true">设置</a>
+                <a class="mini-button mini-button-iconTop" iconcls="icon-close" onclick="onClick" plain="true">关闭</a>
             </div>
-        </header>
-        <div id="body">
-            @RenderSection("featured", required: false)
-            <section class="content-wrapper main-content clear-fix">
-                @RenderBody()
-            </section>
         </div>
-        <footer>
-            <div class="content-wrapper">
-                <div class="float-left">
-                    <p>&copy; @DateTime.Now.Year - 我的 ASP.NET MVC 应用程序</p>
-                </div>
-            </div>
-        </footer>
+        <div title="south" region="south" showsplit="false" showheader="false" height="80" style="text-align: center; background-color: lightgray; border: 0px;">
+            Copyright © 斯一网络科技有限公司版权所有
+            <br />联系方式：021-XXXXXXXX
+        </div>
+        <div title="west" region="west" width="280px" showheader="false" showsplit="false" style="border:0px">
 
-        @Scripts.Render("~/bundles/jquery")
-        @RenderSection("scripts", required: false)
-    </body>
+        </div>
+        <div title="east" region="east" showheader="false" showsplit="false" style="border:0px">
+            寻找心中的他/她
+        </div>
+        <div title="center" region="center" showsplit="false" style="border:0px">
+            @RenderBody()
+        </div>
+    </div>
+</body>
 </html>
