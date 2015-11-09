@@ -21,5 +21,15 @@ namespace Xiaolu.Models.DAL
         public Nullable<System.DateTime> Birthday { get; set; }
         public Nullable<bool> Level { get; set; }
         public string Password { get; set; }
+        public Nullable<bool> Status { get; set; }
+        public string Mobile { get; set; }
+        public Nullable<bool> IsLocked { get; set; }
+        public Nullable<System.DateTime> LoginTime { get; set; }
+        public string LoginAddress { get; set; }
+        public string LoginLang { get; set; }
+        public Nullable<int> ErrLoginTimes { get; set; }
+        public Nullable<System.DateTime> LastFailLoginTime { get; set; }
+        public Nullable<System.DateTime> LastResetPasswordTime { get; set; }
+        public string WeixinId { get; set; }
     }
 }

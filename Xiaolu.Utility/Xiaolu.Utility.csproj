@@ -42,10 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\XiaoluConstants.cs" />
     <Compile Include="Common\XiaoluResources.cs" />
     <Compile Include="Helper\ExceptionHelper.cs" />
     <Compile Include="Model\Interface\IXmlSupport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Result\BaseActionResult.cs" />
     <Compile Include="Result\Interface\IActionResult.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

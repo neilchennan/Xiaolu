@@ -4,24 +4,33 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="XiaoluModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="XiaoluModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="xiaolu_user">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="45" />
+          <Property Name="Password" Type="varchar" MaxLength="45" />
           <Property Name="Description" Type="varchar" MaxLength="255" />
           <Property Name="Gender" Type="bool" />
           <Property Name="Birthday" Type="datetime" Precision="0" />
           <Property Name="Level" Type="bool" />
-          <Property Name="Password" Type="varchar" MaxLength="45" />
+          <Property Name="Status" Type="bool" />
+          <Property Name="Mobile" Type="varchar" MaxLength="45" />
+          <Property Name="IsLocked" Type="bool" />
+          <Property Name="LoginTime" Type="datetime" Precision="0" />
+          <Property Name="LoginAddress" Type="varchar" MaxLength="45" />
+          <Property Name="LoginLang" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="ErrLoginTimes" Type="int" />
+          <Property Name="LastFailLoginTime" Type="datetime" Precision="0" />
+          <Property Name="LastResetPasswordTime" Type="datetime" Precision="0" />
+          <Property Name="WeixinId" Type="varchar" MaxLength="45" />
         </EntityType>
         <EntityContainer Name="XiaoluModelStoreContainer">
           <EntitySet Name="xiaolu_user" EntityType="Self.xiaolu_user" Schema="xiaolu" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="XiaoluModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -36,6 +45,16 @@
           <Property Name="Birthday" Type="DateTime" />
           <Property Name="Level" Type="Boolean" />
           <Property Name="Password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="Boolean" />
+          <Property Name="Mobile" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="IsLocked" Type="Boolean" />
+          <Property Name="LoginTime" Type="DateTime" />
+          <Property Name="LoginAddress" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="LoginLang" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ErrLoginTimes" Type="Int32" />
+          <Property Name="LastFailLoginTime" Type="DateTime" />
+          <Property Name="LastResetPasswordTime" Type="DateTime" />
+          <Property Name="WeixinId" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="XiaoluEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="xiaolu_user" EntityType="XiaoluModel.User" />
@@ -49,6 +68,16 @@
           <EntitySetMapping Name="xiaolu_user">
             <EntityTypeMapping TypeName="XiaoluModel.User">
               <MappingFragment StoreEntitySet="xiaolu_user">
+                <ScalarProperty Name="WeixinId" ColumnName="WeixinId" />
+                <ScalarProperty Name="LastResetPasswordTime" ColumnName="LastResetPasswordTime" />
+                <ScalarProperty Name="LastFailLoginTime" ColumnName="LastFailLoginTime" />
+                <ScalarProperty Name="ErrLoginTimes" ColumnName="ErrLoginTimes" />
+                <ScalarProperty Name="LoginLang" ColumnName="LoginLang" />
+                <ScalarProperty Name="LoginAddress" ColumnName="LoginAddress" />
+                <ScalarProperty Name="LoginTime" ColumnName="LoginTime" />
+                <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
