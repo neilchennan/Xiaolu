@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xiaolu.MobileWeb", "Xiaolu.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xiaolu.Web", "Xiaolu.Web\Xiaolu.Web.csproj", "{899A2B97-9050-4A52-8279-EEB9E7DA2BD6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xiaolu.Webapi", "Xiaolu.Webapi\Xiaolu.Webapi.csproj", "{8CCE2C9D-A4B7-4E09-B1BD-2D2F4081A895}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{899A2B97-9050-4A52-8279-EEB9E7DA2BD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{899A2B97-9050-4A52-8279-EEB9E7DA2BD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{899A2B97-9050-4A52-8279-EEB9E7DA2BD6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CCE2C9D-A4B7-4E09-B1BD-2D2F4081A895}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CCE2C9D-A4B7-4E09-B1BD-2D2F4081A895}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CCE2C9D-A4B7-4E09-B1BD-2D2F4081A895}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CCE2C9D-A4B7-4E09-B1BD-2D2F4081A895}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
