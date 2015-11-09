@@ -1,34 +1,40 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>@ViewBag.Title</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>小鹿API测试</title>
+    <link href="~/ThirdParty/bootstrap335/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/Main.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="~/ThirdParty/bootstrap335/js/bootstrap.min.js"></script>
 </head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <body>
-    <header>
-        <div class="content-wrapper">
-            <div class="float-left">
-                <p class="site-title">
-                    <a href="~/">ASP.NET Web API</a></p>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                @Html.ActionLink("小鹿API测试", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="float-right">
-                <nav>
-                    <ul id="menu">
-                        <li>@Html.ActionLink("主页", "Index", "Home", new { area = "" }, null)</li>
-                        <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
-                    </ul>
-                </nav>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("测试User API", "Index", "UserTest", new { area = "" }, null)</li>
+                </ul>
             </div>
         </div>
-    </header>
-    @RenderBody()
+    </nav>
+    <div class="container">
+        <div class="starter">
+            @RenderBody()
+        </div>
 
-    @Scripts.Render("~/bundles/jquery")
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - 斯一网络科技(上海)有限公司</p>
+        </footer>
+    </div>
+
     @RenderSection("scripts", required: false)
 </body>
 </html>
