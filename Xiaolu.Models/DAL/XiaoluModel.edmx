@@ -13,15 +13,15 @@
           <Property Name="Name" Type="varchar" MaxLength="45" />
           <Property Name="Password" Type="varchar" MaxLength="45" />
           <Property Name="Description" Type="varchar" MaxLength="255" />
-          <Property Name="Gender" Type="bool" />
+          <Property Name="Gender" Type="bool" Nullable="false" />
           <Property Name="Birthday" Type="datetime" Precision="0" />
-          <Property Name="Level" Type="bool" />
-          <Property Name="Status" Type="bool" />
+          <Property Name="Level" Type="int" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="Mobile" Type="varchar" MaxLength="45" />
-          <Property Name="IsLocked" Type="bool" />
+          <Property Name="IsLocked" Type="bool" Nullable="false" />
           <Property Name="LoginTime" Type="datetime" Precision="0" />
           <Property Name="LoginAddress" Type="varchar" MaxLength="45" />
-          <Property Name="LoginLang" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="LoginLang" Type="varchar" MaxLength="45" />
           <Property Name="ErrLoginTimes" Type="int" />
           <Property Name="LastFailLoginTime" Type="datetime" Precision="0" />
           <Property Name="LastResetPasswordTime" Type="datetime" Precision="0" />
@@ -34,31 +34,31 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="XiaoluModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="XiaoluEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="xiaolu_user" EntityType="XiaoluModel.User" />
+        </EntityContainer>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="Name" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
-          <Property Name="Gender" Type="Boolean" />
-          <Property Name="Birthday" Type="DateTime" />
-          <Property Name="Level" Type="Boolean" />
           <Property Name="Password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="Status" Type="Boolean" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="Boolean" Nullable="false" />
+          <Property Name="Birthday" Type="DateTime" />
+          <Property Name="Level" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
           <Property Name="Mobile" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="IsLocked" Type="Boolean" />
+          <Property Name="IsLocked" Type="Boolean" Nullable="false" />
           <Property Name="LoginTime" Type="DateTime" />
           <Property Name="LoginAddress" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <Property Name="LoginLang" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="LoginLang" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
           <Property Name="ErrLoginTimes" Type="Int32" />
           <Property Name="LastFailLoginTime" Type="DateTime" />
           <Property Name="LastResetPasswordTime" Type="DateTime" />
           <Property Name="WeixinId" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="XiaoluEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="xiaolu_user" EntityType="XiaoluModel.User" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -78,13 +78,13 @@
                 <ScalarProperty Name="IsLocked" ColumnName="IsLocked" />
                 <ScalarProperty Name="Mobile" ColumnName="Mobile" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
                 <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="Birthday" ColumnName="Birthday" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

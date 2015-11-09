@@ -1,0 +1,394 @@
+﻿<fieldset>
+    <legend>
+        测试User Api
+    </legend>
+    <ul>
+        <li><a id="create_btn" href="#" onclick="on_create_btn_clicked()">添加(post)</a></li>
+        <li><a id="update_btn" href="#" onclick="on_update_btn_clicked()">更新(put)</a></li>
+        <li><a id="delete_btn" href="#" onclick="on_delete_btn_clicked()">删除(delete)</a></li>
+        <li><a href="#" onclick="list()">列表(Get)</a></li>
+        <li><a id="get_btn" href="#" onclick="on_get_btn_clicked()">实体(Get)</a></li>
+    </ul>
+</fieldset>
+<div id="get_all_content_area" />
+<div id="content_area">
+    <ul id="list_ul"></ul>
+</div>
+
+<div class="modal fade" id="getDilalog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">获取单个专业</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="getDilalog_Id" class="col-sm-2 control-label">ID</label>
+                        <input type="text" class="form-control" id="getDilalog_Id" placeholder="请输入ID">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="on_get_submmit_btn_clicked()">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteDilalog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">删除单个专业</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="deleteDilalog_Id" class="col-sm-2 control-label">ID</label>
+                        <input type="text" class="form-control" id="deleteDilalog_Id" placeholder="请输入ID">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="on_delete_submmit_btn_clicked()">提交</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="createDilalog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">新建用户</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="createDilalog_Name" class="col-sm-2 control-label">用户名</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="createDilalog_Name" class="form-control" placeholder="请输入用户名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="createDilalog_Description" class="col-sm-2 control-label">姓名</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="createDilalog_Description" placeholder="姓名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="createDilalog_Gender" class="col-sm-2 control-label">性别</label>
+                        <div id="createDilalog_Gender" class="col-sm-10">
+                            <label class="control-label">
+                                <input type="radio" name="createDilalog_Gender_radio" value="1" checked>男
+                                <input type="radio" name="createDilalog_Gender_radio" value="0">女
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="createDilalog_Birthday" class="col-sm-2 control-label">生日</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" id="createDilalog_Birthday" placeholder="姓名">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="createDilalog_Level" class="col-sm-2 control-label">等级</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="createDilalog_Level">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="on_create_save_btn_clicked()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editDilalog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">编辑专业</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="editDilalog_Id" class="col-sm-2 control-label">ID</label>
+                        <input type="text" class="form-control" id="editDilalog_Id" placeholder="请输入ID">
+                    </div>
+                    <div class="form-group">
+                        <label for="editDilalog_Name" class="col-sm-2 control-label">专业名</label>
+                        <input type="text" class="form-control" id="editDilalog_Name" placeholder="请输入专业名">
+                    </div>
+                    <div class="form-group">
+                        <label for="editDilalog_Description" class="col-sm-2 control-label">专业描述</label>
+                        <input type="text" class="form-control" id="editDilalog_Description" placeholder="请输入专业描述">
+                    </div>
+                    <div class="form-group">
+                        <label for="editDilalog_Class" class="col-sm-2 control-label">学科</label>
+                        <input type="email" class="form-control" id="editDilalog_Class" placeholder="请输入学科">
+                    </div>
+                    <div class="form-group">
+                        <label for="editDilalog_Catalog" class="col-sm-2 control-label">类别</label>
+                        <input type="text" class="form-control" id="editDilalog_Catalog" placeholder="请输入类别">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="on_edit_save_btn_clicked()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var createDlg = $("#createDilalog");
+    var editDlg = $("#editDilalog");
+    var getDlg = $("#getDilalog");
+    var deleteDlg = $("#deleteDilalog");
+
+    var callbacks = {
+        onSuccess: function () {
+            if (createDlg) {
+                closeDlg(createDlg);
+            }
+            if (editDlg) {
+                closeDlg(editDlg);
+            }
+            if (getDlg) {
+                closeDlg(getDlg);
+            }
+            if (deleteDlg) {
+                closeDlg(deleteDlg);
+            }
+        },
+        onFail: function (triggerButton) {
+            //if ($(triggerButton).linkbutton()) {
+            //    $(triggerButton).linkbutton("enable");
+            //}
+        }
+    };
+
+    function removePanel(panelId) {
+        var pId = '#' + panelId;
+        $(pId).remove();
+    }
+
+    function makePanel(panelId, title, content) {
+        var str =
+        "<div id='{0}' class='panel panel-default'>"
+        + "<div class='panel-heading'>"
+        + "{1}"
+        + "<a id='create_btn' class='btn btn-default' href='#' role='button' data-toggle='modal' style='float:right' onclick='removePanel(\"{2}\")'><span class='glyphicon glyphicon-remove'></span></a>"
+        + "<div style='clear: both;'/>"
+        + "</div>"
+        + "<div class='panel-body'>"
+        + "{3}"
+        + "</div>"
+        + "</div>";
+        str = str.format(panelId, title, panelId, content);
+        return str;
+    }
+
+    function closeDlg(dlg) {
+        dlg.find(':input').not(':button, :submit, :reset, :hidden').removeAttr('checked').removeAttr('selected');
+        dlg.find(':input').not(':button, :submit, :reset, :checkbox').val('');
+        dlg.modal("hide");
+    }
+
+    function on_get_submmit_btn_clicked() {
+        var id = $("#getDilalog_Id").val();
+        $.ajax({
+            cache: false,
+            type: 'GET',
+            url: '/api/professions/' + id,
+            //data: queryData,
+            //contentType: "application/json",
+            dataType: 'json',
+            success: function (results) {
+                callbacks.onSuccess();
+                var title;
+                var data;
+                if (results.IsSuccess) {
+                    title = "操作成功";
+                    data = results.Obj;
+                }
+                else {
+                    title = "操作失败";
+                    data = results.Message;
+                }
+
+                var newId = new Date().getTime();
+                var itemStr = makePanel(newId, title, JSON.stringify(data));
+                $('#list_ul').prepend(itemStr);
+            }
+        });
+    }
+
+    function on_get_btn_clicked() {
+        getDlg.modal("show");
+    }
+
+    function list() {
+        $.ajax({
+            cache: false,
+            type: 'GET',
+            url: '/api/Professions/',
+            //data: queryData,
+            //contentType: "application/json",
+            dataType: 'json',
+            success: function (results) {
+                var title;
+                var data;
+                if (results.IsSuccess) {
+                    title = "操作成功";
+                    data = results.Obj;
+                }
+                else {
+                    title = "操作失败";
+                    data = results.Message;
+                }
+                //var itemStr = '<li>' + JSON.stringify(data) + '</li>';
+                var newId = new Date().getTime();
+                var itemStr = makePanel(newId, title, JSON.stringify(data));
+                $('#list_ul').prepend(itemStr);
+            }
+        });
+    }
+
+    function on_create_btn_clicked() {
+        createDlg.modal("show");
+    }
+    function on_create_save_btn_clicked() {
+        var newObj = new Object();
+        newObj.Name = $('#createDilalog_Name').val();
+        newObj.Description = $('#createDilalog_Description').val();
+        newObj.Gender = $('#createDilalog_Gender input:radio:checked').val();
+        newObj.Birthday = $('#createDilalog_Birthday').val();
+        newObj.Level = $('#createDilalog_Level').val();
+        doCreate(newObj);
+    }
+    function doCreate(newObj) {
+        var params = { "Name": newObj.Name, "Description": newObj.Description, "Gender": newObj.Gender, "Birthday": newObj.Birthday, "Level":newObj.Level };
+        $.ajax({
+            cache: false,
+            type: 'POST',
+            url: '/api/Users/',
+            data: params,
+            //contentType: "application/json",
+            dataType: 'json',
+            success: function (results) {
+                callbacks.onSuccess();
+                var title;
+                var data;
+                if (results.IsSuccess) {
+                    title = "操作成功";
+                    data = results.Message;
+                }
+                else {
+                    title = "操作失败";
+                    data = results.Message;
+                }
+                var newId = new Date().getTime();
+                var itemStr = makePanel(newId, title, JSON.stringify(data));
+                $('#list_ul').prepend(itemStr);
+            }
+        });
+    }
+
+    function on_update_btn_clicked() {
+        editDlg.modal("show");
+    }
+    function on_edit_save_btn_clicked() {
+        var modifiedObj = new Object();
+        modifiedObj.Id = $('#editDilalog_Id').val();
+        modifiedObj.Name = $('#editDilalog_Name').val();
+        modifiedObj.Description = $('#editDilalog_Description').val();
+        modifiedObj.Class = $('#editDilalog_Class').val();
+        modifiedObj.Catalog = $('#editDilalog_Catalog').val();
+        doUpdate(modifiedObj);
+    }
+    function doUpdate(modifiedObj) {
+        var params = { "Name": modifiedObj.Name, "Description": modifiedObj.Description, "Class": modifiedObj.Class, "Catalog": modifiedObj.Catalog };
+        $.ajax({
+            cache: false,
+            type: 'PUT',
+            url: '/api/Professions/' + modifiedObj.Id,
+            data: params,
+            //contentType: "application/json",
+            dataType: 'json',
+            success: function (results) {
+                callbacks.onSuccess();
+                var title;
+                var data;
+                if (results.IsSuccess) {
+                    title = "操作成功";
+                    data = results.Message;
+                }
+                else {
+                    title = "操作失败";
+                    data = results.Message;
+                }
+                var newId = new Date().getTime();
+                var itemStr = makePanel(newId, title, JSON.stringify(data));
+                $('#list_ul').prepend(itemStr);
+            }
+        });
+    }
+
+    function on_delete_btn_clicked() {
+        deleteDlg.modal("show");
+    }
+    function on_delete_submmit_btn_clicked() {
+        var id = $("#deleteDilalog_Id").val();
+        $.ajax({
+            cache: false,
+            type: 'DELETE',
+            url: '/api/Professions/' + id,
+            //data: queryData,
+            //contentType: "application/json",
+            dataType: 'json',
+            success: function (results) {
+                callbacks.onSuccess();
+                var title;
+                var data;
+                if (results.IsSuccess) {
+                    title = "操作成功";
+                    data = results.Message;
+                }
+                else {
+                    title = "操作失败";
+                    data = results.Message;
+                }
+
+                var newId = new Date().getTime();
+                var itemStr = makePanel(newId, title, JSON.stringify(data));
+                $('#list_ul').prepend(itemStr);
+            }
+        });
+    }
+    function deletes(id) {
+        $.ajax({
+            url: "/api/Test/1",
+            type: "DELETE",
+            success: function (data) { alert(data); }
+        });
+
+    }
+</script>

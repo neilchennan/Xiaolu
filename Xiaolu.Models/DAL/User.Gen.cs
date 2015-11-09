@@ -16,14 +16,14 @@ namespace Xiaolu.Models.DAL
     {
         public string Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
-        public Nullable<bool> Gender { get; set; }
-        public Nullable<System.DateTime> Birthday { get; set; }
-        public Nullable<bool> Level { get; set; }
         public string Password { get; set; }
-        public Nullable<bool> Status { get; set; }
+        public string Description { get; set; }
+        public bool Gender { get; set; }
+        public Nullable<System.DateTime> Birthday { get; set; }
+        public int Level { get; set; }
+        public int Status { get; set; }
         public string Mobile { get; set; }
-        public Nullable<bool> IsLocked { get; set; }
+        public bool IsLocked { get; set; }
         public Nullable<System.DateTime> LoginTime { get; set; }
         public string LoginAddress { get; set; }
         public string LoginLang { get; set; }

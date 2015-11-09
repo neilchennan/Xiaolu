@@ -10,6 +10,7 @@ using Xiaolu.Models.Service;
 using Xiaolu.Utility.Common;
 using Xiaolu.Utility.Helper;
 using Xiaolu.Utility.Result;
+using Xiaolu.Webapi.Models;
 
 namespace Xiaolu.Webapi.Controllers
 {
@@ -52,9 +53,10 @@ namespace Xiaolu.Webapi.Controllers
 
         // POST api/users
         //新建
-        public Object Post(User obj)
+        public Object Post(UserApiModel obj)
         {
-            BaseActionResult result = BusinessService.CreateUser(obj);
+            User obj4save = obj.ToDto();
+            BaseActionResult result = BusinessService.CreateUser(obj4save);
             return new { IsSuccess = result.IsSuccess, Message = result.Message };
         }
 
