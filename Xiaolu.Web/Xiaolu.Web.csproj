@@ -1307,10 +1307,6 @@
       <Project>{c2cbd4d2-5ab6-4bd6-894d-ee4cd56c907f}</Project>
       <Name>Xiaolu.Models</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Xiaolu.Utility\Xiaolu.Utility.csproj">
-      <Project>{f31742d4-75be-4f48-be7a-1a949763c755}</Project>
-      <Name>Xiaolu.Utility</Name>
-    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
