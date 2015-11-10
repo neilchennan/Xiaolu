@@ -319,6 +319,10 @@
       <Project>{c2cbd4d2-5ab6-4bd6-894d-ee4cd56c907f}</Project>
       <Name>Xiaolu.Models</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Xiaolu.Webapi\Xiaolu.Webapi.csproj">
+      <Project>{8cce2c9d-a4b7-4e09-b1bd-2d2f4081a895}</Project>
+      <Name>Xiaolu.Webapi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Xiaolu.WeixinApi\Xiaolu.WeixinApi.csproj">
       <Project>{a7920511-2d50-4d1a-97d1-4f4818ab02a8}</Project>
       <Name>Xiaolu.WeixinApi</Name>
