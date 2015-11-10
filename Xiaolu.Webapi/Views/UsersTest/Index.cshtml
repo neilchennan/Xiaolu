@@ -20,13 +20,15 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">获取单个专业</h4>
+                <h4 class="modal-title" id="myModalLabel">获取单个用户信息</h4>
             </div>
             <div class="modal-body">
                 <form role="form" class="form-horizontal">
                     <div class="form-group">
                         <label for="getDilalog_Id" class="col-sm-2 control-label">ID</label>
-                        <input type="text" class="form-control" id="getDilalog_Id" placeholder="请输入ID">
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="getDilalog_Id" placeholder="请输入ID">
+                        </div>
                     </div>
                 </form>
             </div>
@@ -43,13 +45,15 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">删除单个专业</h4>
+                <h4 class="modal-title" id="myModalLabel">删除单个用户</h4>
             </div>
             <div class="modal-body">
                 <form role="form" class="form-horizontal">
                     <div class="form-group">
                         <label for="deleteDilalog_Id" class="col-sm-2 control-label">ID</label>
-                        <input type="text" class="form-control" id="deleteDilalog_Id" placeholder="请输入ID">
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="deleteDilalog_Id" placeholder="请输入ID">
+                        </div>
                     </div>
                 </form>
             </div>
@@ -85,16 +89,25 @@
                     <div class="form-group">
                         <label for="createDilalog_Gender" class="col-sm-2 control-label">性别</label>
                         <div id="createDilalog_Gender" class="col-sm-10">
-                            <label class="control-label">
+                            @*<label class="control-label">
                                 <input type="radio" name="createDilalog_Gender_radio" value="1" checked>男
-                                <input type="radio" name="createDilalog_Gender_radio" value="0">女
-                            </label>
+                                <input type="radio" name="createDilalog_Gender_radio" value="0" checked>女
+                            </label>*@
+
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-primary">
+                                    <input type="radio" name="createDilalog_Gender_radio" id="createDilalog_Gender_radio_m" value="1" checked> 男
+                                </label>
+                                <label class="btn btn-primary">
+                                    <input type="radio" name="createDilalog_Gender_radio" id="createDilalog_Gender_radio_f" value="0" checked> 女
+                                </label>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="createDilalog_Birthday" class="col-sm-2 control-label">生日</label>
                         <div class="col-sm-10">
-                            <input type="date" class="form-control" id="createDilalog_Birthday" placeholder="姓名">
+                            <input type="date" class="form-control" id="createDilalog_Birthday" placeholder="生日">
                         </div>
                     </div>
                     <div class="form-group">
@@ -106,6 +119,18 @@
                                 <option>3</option>
                                 <option>4</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="createDilalog_Mobile" class="col-sm-2 control-label">手机号</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="createDilalog_Mobile" placeholder="请输入手机号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="createDilalog_WeixinId" class="col-sm-2 control-label">微信号</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="createDilalog_WeixinId" placeholder="请输入微信号">
                         </div>
                     </div>
                 </form>
@@ -123,29 +148,69 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">编辑专业</h4>
+                <h4 class="modal-title" id="myModalLabel">编辑用户</h4>
             </div>
             <div class="modal-body">
                 <form role="form" class="form-horizontal">
                     <div class="form-group">
                         <label for="editDilalog_Id" class="col-sm-2 control-label">ID</label>
-                        <input type="text" class="form-control" id="editDilalog_Id" placeholder="请输入ID">
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="editDilalog_Id" placeholder="请输入ID">
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="editDilalog_Name" class="col-sm-2 control-label">专业名</label>
-                        <input type="text" class="form-control" id="editDilalog_Name" placeholder="请输入专业名">
+                        <label for="editDilalog_Name" class="col-sm-2 control-label">用户名</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="editDilalog_Name" placeholder="请输入用户名">
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="editDilalog_Description" class="col-sm-2 control-label">专业描述</label>
-                        <input type="text" class="form-control" id="editDilalog_Description" placeholder="请输入专业描述">
+                        <label for="editDilalog_Description" class="col-sm-2 control-label">姓名</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="editDilalog_Description" placeholder="请输入姓名">
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="editDilalog_Class" class="col-sm-2 control-label">学科</label>
-                        <input type="email" class="form-control" id="editDilalog_Class" placeholder="请输入学科">
+                        <label for="editDilalog_Class" class="col-sm-2 control-label">性别</label>
+                        <div id="editDilalog_Gender" class="col-sm-10">
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-primary">
+                                    <input type="radio" name="editDilalog_Gender_radio" id="editDilalog_Gender_radio_m" value="1" checked> 男
+                                </label>
+                                <label class="btn btn-primary">
+                                    <input type="radio" name="editDilalog_Gender_radio" id="editDilalog_Gender_radio_f" value="0" checked> 女
+                                </label>
+                            </div>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="editDilalog_Catalog" class="col-sm-2 control-label">类别</label>
-                        <input type="text" class="form-control" id="editDilalog_Catalog" placeholder="请输入类别">
+                        <label for="editDilalog_Birthday" class="col-sm-2 control-label">生日</label>
+                        <div class="col-sm-10">
+                            <input type="date" class="form-control" id="editDilalog_Birthday" placeholder="生日">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="editDilalog_Level" class="col-sm-2 control-label">等级</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" id="editDilalog_Level">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="editDilalog_Mobile" class="col-sm-2 control-label">手机号</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="editDilalog_Mobile" placeholder="请输入手机号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="editDilalog_WeixinId" class="col-sm-2 control-label">微信号</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="editDilalog_WeixinId" placeholder="请输入微信号">
+                        </div>
                     </div>
                 </form>
             </div>
@@ -185,6 +250,13 @@
         }
     };
 
+    //$(function () {
+    //    createDlg.on('show.bs.modal', function () {
+    //        $("input[name='createDilalog_Gender_radio']").get(0).checked = true;
+    //        //$('.input').attr('checked', true);
+    //    })
+    //});
+
     function removePanel(panelId) {
         var pId = '#' + panelId;
         $(pId).remove();
@@ -208,7 +280,7 @@
 
     function closeDlg(dlg) {
         dlg.find(':input').not(':button, :submit, :reset, :hidden').removeAttr('checked').removeAttr('selected');
-        dlg.find(':input').not(':button, :submit, :reset, :checkbox').val('');
+        dlg.find(':input').not(':button, :submit, :reset, :checkbox, :radio').val('');
         dlg.modal("hide");
     }
 
@@ -217,7 +289,7 @@
         $.ajax({
             cache: false,
             type: 'GET',
-            url: '/api/professions/' + id,
+            url: '/api/Users/' + id,
             //data: queryData,
             //contentType: "application/json",
             dataType: 'json',
@@ -249,7 +321,7 @@
         $.ajax({
             cache: false,
             type: 'GET',
-            url: '/api/Professions/',
+            url: '/api/Users/',
             //data: queryData,
             //contentType: "application/json",
             dataType: 'json',
@@ -279,13 +351,15 @@
         var newObj = new Object();
         newObj.Name = $('#createDilalog_Name').val();
         newObj.Description = $('#createDilalog_Description').val();
-        newObj.Gender = $('#createDilalog_Gender input:radio:checked').val();
+        newObj.Gender = $('input[name="createDilalog_Gender_radio"]:checked').val();
         newObj.Birthday = $('#createDilalog_Birthday').val();
         newObj.Level = $('#createDilalog_Level').val();
+        newObj.Mobile = $('#createDilalog_Mobile').val();
+        newObj.WeixinId = $('#createDilalog_WeixinId').val();
         doCreate(newObj);
     }
     function doCreate(newObj) {
-        var params = { "Name": newObj.Name, "Description": newObj.Description, "Gender": newObj.Gender, "Birthday": newObj.Birthday, "Level":newObj.Level };
+        var params = { "Name": newObj.Name, "Description": newObj.Description, "Gender": newObj.Gender, "Birthday": newObj.Birthday, "Level":newObj.Level, "Mobile":newObj.Mobile, "WeixinId":newObj.WeixinId };
         $.ajax({
             cache: false,
             type: 'POST',
@@ -320,16 +394,19 @@
         modifiedObj.Id = $('#editDilalog_Id').val();
         modifiedObj.Name = $('#editDilalog_Name').val();
         modifiedObj.Description = $('#editDilalog_Description').val();
-        modifiedObj.Class = $('#editDilalog_Class').val();
-        modifiedObj.Catalog = $('#editDilalog_Catalog').val();
+        modifiedObj.Gender = $('input[name="editDilalog_Gender_radio"]:checked').val();
+        modifiedObj.Birthday = $('#editDilalog_Birthday').val();
+        modifiedObj.Level = $('#editDilalog_Level').val();
+        modifiedObj.Mobile = $('#editDilalog_Mobile').val();
+        modifiedObj.WeixinId = $('#editDilalog_WeixinId').val();
         doUpdate(modifiedObj);
     }
     function doUpdate(modifiedObj) {
-        var params = { "Name": modifiedObj.Name, "Description": modifiedObj.Description, "Class": modifiedObj.Class, "Catalog": modifiedObj.Catalog };
+        var params = { "Name": modifiedObj.Name, "Description": modifiedObj.Description, "Gender": modifiedObj.Gender, "Birthday": modifiedObj.Birthday, "Level": modifiedObj.Level, "Mobile": modifiedObj.Mobile, "WeixinId": modifiedObj.WeixinId };
         $.ajax({
             cache: false,
             type: 'PUT',
-            url: '/api/Professions/' + modifiedObj.Id,
+            url: '/api/Users/' + modifiedObj.Id,
             data: params,
             //contentType: "application/json",
             dataType: 'json',
@@ -360,7 +437,7 @@
         $.ajax({
             cache: false,
             type: 'DELETE',
-            url: '/api/Professions/' + id,
+            url: '/api/Users/' + id,
             //data: queryData,
             //contentType: "application/json",
             dataType: 'json',

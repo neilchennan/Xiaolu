@@ -25,10 +25,10 @@ namespace Xiaolu.Webapi.Controllers
                 if (query == null)
                     query = new UserQuery();
                 List<User> dbList = BusinessService.GetUserListByQuery(query);
-                //List<UserAPIModel> vmList = UserAPIModel.FromUserList(dbList);
+                List<UserApiModel> vmList = UserApiModel.FromUserList(dbList);
 
                 msg = string.Format(XiaoluResources.MSG_SINGLE_ACTION_SUCCESS, "获取", "用户列表");
-                return new { IsSuccess = true, Message = msg, Obj = dbList };
+                return new { IsSuccess = true, Message = msg, Obj = vmList };
             }
             catch (Exception e)
             {
@@ -42,46 +42,66 @@ namespace Xiaolu.Webapi.Controllers
         {
             string msg;
             User objinDb = BusinessService.GetUserById(id);
+            UserApiModel vmObj = new UserApiModel(objinDb);
             if (objinDb == null)
             {
                 msg = string.Format(XiaoluResources.MSG_OBJECT_NOT_FOUND_WITH_ID, id);
                 return new { IsSuccess = false, Message = msg };
             }
             msg = string.Format(XiaoluResources.MSG_SINGLE_ACTION_SUCCESS, "获取", "用户");
-            return new { IsSuccess = true, Message = msg, Obj = objinDb };
+            return new { IsSuccess = true, Message = msg, Obj = vmObj };
         }
 
         // POST api/users
         //新建
         public Object Post(UserApiModel obj)
         {
-            User obj4save = obj.ToDto();
-            BaseActionResult result = BusinessService.CreateUser(obj4save);
-            return new { IsSuccess = result.IsSuccess, Message = result.Message };
+            string msg;
+            try
+            {
+                User obj4save = obj.ToDto();
+                BaseActionResult result = BusinessService.CreateUser(obj4save);
+                return new { IsSuccess = result.IsSuccess, Message = result.Message };
+            }
+            catch (Exception e)
+            {
+                msg = string.Format(XiaoluResources.MSG_CREATE_FAIL, obj.Name) + string.Format(XiaoluResources.STR_FAIL_RESAON, ExceptionHelper.GetInnerExceptionInfo(e));
+                return new { IsSuccess = false, Message = msg };
+            }
         }
 
         // PUT api/users/5
         //修改
-        public Object Put(string id, User obj)
+        public Object Put(string id, UserApiModel obj)
         {
             string msg;
-            User objinDb = BusinessService.GetUserById(id);
-            if (objinDb == null)
+            try
             {
-                msg = string.Format(XiaoluResources.MSG_OBJECT_NOT_FOUND_WITH_ID, id);
+                User obj4save = obj.ToDto();
+
+                User objinDb = BusinessService.GetUserById(id);
+                if (objinDb == null)
+                {
+                    msg = string.Format(XiaoluResources.MSG_OBJECT_NOT_FOUND_WITH_ID, id);
+                    return new { IsSuccess = false, Message = msg };
+                }
+                objinDb.Name = obj4save.Name;
+                objinDb.Description = obj4save.Description;
+                objinDb.Gender = obj4save.Gender;
+                objinDb.Birthday = obj4save.Birthday;
+                objinDb.Level = obj4save.Level;
+                objinDb.Status = obj4save.Status;
+                objinDb.Mobile = obj4save.Mobile;
+                objinDb.WeixinId = obj4save.WeixinId;
+
+                BaseActionResult result = BusinessService.UpdateUser(objinDb);
+                return new { IsSuccess = result.IsSuccess, Message = result.Message };
+            }
+            catch (Exception e)
+            {
+                msg = string.Format(XiaoluResources.MSG_CREATE_FAIL, obj.Name) + string.Format(XiaoluResources.STR_FAIL_RESAON, ExceptionHelper.GetInnerExceptionInfo(e));
                 return new { IsSuccess = false, Message = msg };
             }
-            objinDb.Name = obj.Name;
-            objinDb.Description = obj.Description;
-            objinDb.Gender = obj.Gender;
-            objinDb.Birthday = obj.Birthday;
-            objinDb.Level = obj.Level;
-            objinDb.Status = obj.Status;
-            objinDb.Mobile = obj.Mobile;
-            objinDb.WeixinId = obj.WeixinId;
-
-            BaseActionResult result = BusinessService.UpdateUser(objinDb);
-            return new { IsSuccess = result.IsSuccess, Message = result.Message };
         }
 
         // DELETE api/users/5
