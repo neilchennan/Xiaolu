@@ -55,7 +55,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\History.Gen.cs">
+      <DependentUpon>XiaoluModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\User.Gen.cs">
+      <DependentUpon>XiaoluModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\UserAccessToken.Gen.cs">
       <DependentUpon>XiaoluModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\XiaoluModel.Context.cs">
@@ -75,12 +81,18 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Query\BaseQuery.cs" />
+    <Compile Include="Query\HistoryQuery.cs" />
+    <Compile Include="Query\UserAccessTokenQuery.cs" />
     <Compile Include="Query\UserQuery.cs" />
     <Compile Include="Repository\BaseRepository.cs" />
+    <Compile Include="Repository\HistoryRepository.cs" />
     <Compile Include="Repository\Interface\IRepository.cs" />
+    <Compile Include="Repository\UserAccessTokenRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Service\BusinessService.cs" />
+    <Compile Include="Service\BusinessService.History.cs" />
     <Compile Include="Service\BusinessService.User.cs" />
+    <Compile Include="Service\BusinessService.UserAccessToken.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

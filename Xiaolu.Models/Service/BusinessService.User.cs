@@ -96,6 +96,20 @@ namespace Xiaolu.Models.Service
             return userInDb;
         }
 
+        public static User GetUserByName(string name4query)
+        {
+            UserQuery query = new UserQuery() { NameEqual = name4query };
+            User userInDb = GetUserListByQuery(query).FirstOrDefault();
+            return userInDb;
+        }
+
+        public static User GetUserByMobile(string mobile4query)
+        {
+            UserQuery query = new UserQuery() { MobileEqual = mobile4query };
+            User userInDb = GetUserListByQuery(query).FirstOrDefault();
+            return userInDb;
+        }
+
         public static bool _isMatch(User obj, UserQuery query)
         {
             if (!string.IsNullOrEmpty(query.IdEqual) && !string.Equals(obj.Id, query.IdEqual))
@@ -117,6 +131,9 @@ namespace Xiaolu.Models.Service
             if ((query.StatusIn != null) && (query.StatusIn.Select(item => string.Equals(item, obj.Status)) == null))
                 return false;
             if ((query.StatusNotIn != null) && (query.StatusNotIn.Select(item => string.Equals(item, obj.Status)) != null))
+                return false;
+
+            if (!string.IsNullOrEmpty(query.MobileEqual) && !string.Equals(obj.Mobile, query.MobileEqual))
                 return false;
 
             return true;

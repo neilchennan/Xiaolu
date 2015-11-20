@@ -1,0 +1,142 @@
+﻿<fieldset>
+    <legend>
+        测试Register Api
+    </legend>
+    <ul>
+        <li><a id="create_btn" href="#" onclick="on_create_btn_clicked()">添加(post)</a></li>
+        @*<li><a id="update_btn" href="#" onclick="on_update_btn_clicked()">更新(put)</a></li>
+        <li><a id="delete_btn" href="#" onclick="on_delete_btn_clicked()">删除(delete)</a></li>
+        <li><a href="#" onclick="list()">列表(Get)</a></li>
+        <li><a id="get_btn" href="#" onclick="on_get_btn_clicked()">实体(Get)</a></li>*@
+    </ul>
+</fieldset>
+<div id="get_all_content_area" />
+<div id="content_area">
+    <ul id="list_ul"></ul>
+</div>
+
+<div class="modal fade" id="registerDilalog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">注册</h4>
+            </div>
+            <div class="modal-body">
+                <form role="form" class="form-horizontal">
+                    <div class="form-group">
+                        <label for="createDilalog_UserId" class="col-sm-2 control-label">用户Id</label>
+                        <div class="col-sm-10">
+                            <input type="text" id="createDilalog_UserId" class="form-control" placeholder="请输入用户Id">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="createDilalog_Mobile" class="col-sm-2 control-label">手机号</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="createDilalog_Mobile" placeholder="请输入手机号">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="createDilalog_Password" class="col-sm-2 control-label">密码</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" id="createDilalog_Password" placeholder="请输入密码">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="on_create_save_btn_clicked()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    var registerDilalog = $("#registerDilalog");
+
+    var callbacks = {
+        onSuccess: function () {
+            if (registerDilalog) {
+                closeDlg(registerDilalog);
+            }
+        },
+        onFail: function (triggerButton) {
+            //if ($(triggerButton).linkbutton()) {
+            //    $(triggerButton).linkbutton("enable");
+            //}
+        }
+    };
+
+    //$(function () {
+    //    createDlg.on('show.bs.modal', function () {
+    //        $("input[name='createDilalog_Gender_radio']").get(0).checked = true;
+    //        //$('.input').attr('checked', true);
+    //    })
+    //});
+
+    function removePanel(panelId) {
+        var pId = '#' + panelId;
+        $(pId).remove();
+    }
+
+    function makePanel(panelId, title, content) {
+        var str =
+        "<div id='{0}' class='panel panel-default'>"
+        + "<div class='panel-heading'>"
+        + "{1}"
+        + "<a id='create_btn' class='btn btn-default' href='#' role='button' data-toggle='modal' style='float:right' onclick='removePanel(\"{2}\")'><span class='glyphicon glyphicon-remove'></span></a>"
+        + "<div style='clear: both;'/>"
+        + "</div>"
+        + "<div class='panel-body'>"
+        + "{3}"
+        + "</div>"
+        + "</div>";
+        str = str.format(panelId, title, panelId, content);
+        return str;
+    }
+
+    function closeDlg(dlg) {
+        dlg.find(':input').not(':button, :submit, :reset, :hidden').removeAttr('checked').removeAttr('selected');
+        dlg.find(':input').not(':button, :submit, :reset, :checkbox, :radio').val('');
+        dlg.modal("hide");
+    }
+
+    function on_create_btn_clicked() {
+        registerDilalog.modal("show");
+    }
+    function on_create_save_btn_clicked() {
+        var newObj = new Object();
+        newObj.UserId = $('#createDilalog_UserId').val();
+        newObj.Mobile = $('#createDilalog_Mobile').val();
+        newObj.Password = $('#createDilalog_Password').val();
+        doRegister(newObj);
+    }
+    function doRegister(newObj) {
+        var params = { "UserId": newObj.UserId, "Mobile": newObj.Mobile, "Password": newObj.Password };
+        $.ajax({
+            cache: false,
+            type: 'POST',
+            url: '/api/Register/',
+            data: params,
+            //contentType: "application/json",
+            dataType: 'json',
+            success: function (results) {
+                callbacks.onSuccess();
+                var title;
+                var data;
+                if (results.IsSuccess) {
+                    title = "操作成功";
+                    data = results.Message;
+                }
+                else {
+                    title = "操作失败";
+                    data = results.Message;
+                }
+                var newId = new Date().getTime();
+                var itemStr = makePanel(newId, title, JSON.stringify(data));
+                $('#list_ul').prepend(itemStr);
+            }
+        });
+    }
+</script>

@@ -13,5 +13,7 @@ namespace Xiaolu.Models.Query
 
         public string[] StatusIn { set; get; }
         public string[] StatusNotIn { set; get; }
+
+        public string MobileEqual { set; get; }
     }
 }

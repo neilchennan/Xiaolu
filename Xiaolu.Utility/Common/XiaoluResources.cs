@@ -13,6 +13,8 @@ namespace Xiaolu.Utility.Common
         public static string STR_USER = "用户";
         public static string STR_DELETE = "删除";
         public static string STR_PROFESSION = "专业";
+        public static string STR_USER_ACCESS_TOKEN = "用户访问令牌";
+        public static string STR_HISTORY = "历史";
 
         public static string MSG_OBJECT_IS_NULL = "对象为空";
         public static string MSG_CREATE_SUCCESS = "成功新建 '{0}'。";
@@ -24,6 +26,12 @@ namespace Xiaolu.Utility.Common
         public static string MSG_DELETE_FAIL = "无法删除 '{0}'。";
         public static string MSG_BULK_ACTION_SUCCESS = "成功{0}{1}条记录。";
         public static string MSG_BULK_ACTION_FAIL = "{0}{1}条记录失败。";
+
+        public static string MSG_USER_ID_ALREAY_EXIST = "用户Id已存在";
+        public static string MSG_MOBILE_ALREAY_EXIST = "手机号已存在";
+        public static string MSG_USER_ID_IS_NULL = "用户号为空";
+        public static string MSG_MOBILE_IS_NULL = "手机号为空";
+        public static string MSG_PASSWORD_IS_NOT_VALID = "密码不合法，必须至少6位";
 
         public static string MSG_INNER_EXCEPTION_INFO = "出错位置：{0}{1}--错误信息：{2}";
         public static string MSG_TOTAL_RESULT_SUMMARY = "总数 ： {0}, 成功 ： {1}, 失败 ： {2} 。";

@@ -26,5 +26,7 @@ namespace Xiaolu.Models.DAL
         }
     
         public virtual DbSet<User> xiaolu_user { get; set; }
+        public virtual DbSet<History> xiaolu_history { get; set; }
+        public virtual DbSet<UserAccessToken> xiaolu_user_access_token { get; set; }
     }
 }

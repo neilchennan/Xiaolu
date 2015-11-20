@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="XiaoluModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="xiaolu_history">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="Content" Type="varchar" MaxLength="255" />
+          <Property Name="CreationDate" Type="datetime" Precision="0" />
+        </EntityType>
         <EntityType Name="xiaolu_user">
           <Key>
             <PropertyRef Name="Id" />
@@ -27,8 +36,21 @@
           <Property Name="LastResetPasswordTime" Type="datetime" Precision="0" />
           <Property Name="WeixinId" Type="varchar" MaxLength="45" />
         </EntityType>
+        <EntityType Name="xiaolu_user_access_token">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="AccessToken" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="ExpireDate" Type="datetime" Precision="0" />
+          <Property Name="WeixinId" Type="varchar" MaxLength="45" />
+          <Property Name="LoginIp" Type="varchar" MaxLength="45" />
+        </EntityType>
         <EntityContainer Name="XiaoluModelStoreContainer">
+          <EntitySet Name="xiaolu_history" EntityType="Self.xiaolu_history" Schema="xiaolu" store:Type="Tables" />
           <EntitySet Name="xiaolu_user" EntityType="Self.xiaolu_user" Schema="xiaolu" store:Type="Tables" />
+          <EntitySet Name="xiaolu_user_access_token" EntityType="Self.xiaolu_user_access_token" Schema="xiaolu" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -36,6 +58,8 @@
       <Schema Namespace="XiaoluModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="XiaoluEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="xiaolu_user" EntityType="XiaoluModel.User" />
+          <EntitySet Name="xiaolu_history" EntityType="XiaoluModel.History" />
+          <EntitySet Name="xiaolu_user_access_token" EntityType="XiaoluModel.UserAccessToken" />
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -58,6 +82,26 @@
           <Property Name="LastFailLoginTime" Type="DateTime" />
           <Property Name="LastResetPasswordTime" Type="DateTime" />
           <Property Name="WeixinId" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="Content" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDate" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="UserAccessToken">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="AccessToken" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="ExpireDate" Type="DateTime" />
+          <Property Name="WeixinId" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="LoginIp" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -84,6 +128,28 @@
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="xiaolu_history">
+            <EntityTypeMapping TypeName="XiaoluModel.History">
+              <MappingFragment StoreEntitySet="xiaolu_history">
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="xiaolu_user_access_token">
+            <EntityTypeMapping TypeName="XiaoluModel.UserAccessToken">
+              <MappingFragment StoreEntitySet="xiaolu_user_access_token">
+                <ScalarProperty Name="LoginIp" ColumnName="LoginIp" />
+                <ScalarProperty Name="WeixinId" ColumnName="WeixinId" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+                <ScalarProperty Name="AccessToken" ColumnName="AccessToken" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
