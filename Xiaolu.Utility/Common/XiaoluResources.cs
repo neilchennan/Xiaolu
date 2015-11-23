@@ -26,6 +26,7 @@ namespace Xiaolu.Utility.Common
         public static string MSG_DELETE_FAIL = "无法删除 '{0}'。";
         public static string MSG_BULK_ACTION_SUCCESS = "成功{0}{1}条记录。";
         public static string MSG_BULK_ACTION_FAIL = "{0}{1}条记录失败。";
+        public static string MSG_SEND_VERCODE_FAIL = "验证码发送失败。";
 
         public static string MSG_USER_ID_ALREAY_EXIST = "用户Id已存在";
         public static string MSG_MOBILE_ALREAY_EXIST = "手机号已存在";

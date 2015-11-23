@@ -40,15 +40,23 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="TopSdk, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>ThirdParty\Sms\Apibaichuan\TopSdk.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\XiaoluConstants.cs" />
     <Compile Include="Common\XiaoluResources.cs" />
     <Compile Include="Helper\ExceptionHelper.cs" />
+    <Compile Include="Helper\SmsHelper.cs" />
     <Compile Include="Model\Interface\IXmlSupport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Result\BaseActionResult.cs" />
     <Compile Include="Result\Interface\IActionResult.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ThirdParty\Sms\Apibaichuan\TopSdk.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
