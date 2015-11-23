@@ -9,6 +9,11 @@ namespace Xiaolu.Webapi
     {
         public static void Register(HttpConfiguration config)
         {
+            //支持跨域请求
+            //http://www.asp.net/web-api/overview/security/enabling-cross-origin-requests-in-web-api
+            //http://blog.csdn.net/starfd/article/details/45307659
+            config.EnableCors();
+
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

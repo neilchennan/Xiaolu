@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Xiaolu.Models.DAL;
 using Xiaolu.Models.Query;
 using Xiaolu.Models.Service;
@@ -17,6 +18,8 @@ namespace Xiaolu.Webapi.Controllers
     public class UsersController : ApiController
     {
         // GET api/users
+        //跨域请求精确控制
+        //[EnableCors(origins: "*", headers: "*", methods: "*")]
         public Object Get(UserQuery query)
         {
             string msg;

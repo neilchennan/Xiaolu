@@ -322,6 +322,8 @@
             cache: false,
             type: 'GET',
             url: '/api/Users/',
+            //测试跨域请求
+            //url: 'http://115.159.40.79/api/Users/',
             //data: queryData,
             //contentType: "application/json",
             dataType: 'json',
@@ -437,6 +439,7 @@
         $.ajax({
             cache: false,
             type: 'DELETE',
+            //url: 'http://115.159.40.79//api/Users/' + id,
             url: '/api/Users/' + id,
             //data: queryData,
             //contentType: "application/json",
