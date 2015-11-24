@@ -23,6 +23,8 @@ namespace Xiaolu.Utility.Common
 
         public static void AddAccessTokenUserId(string accessToken, string userId)
         {
+            if (!_accessTokenUserDic.ContainsKey(accessToken))
+            {
                 lock (_lock)
                 {
                     if (!_accessTokenUserDic.ContainsKey(accessToken))
@@ -43,6 +45,7 @@ namespace Xiaolu.Utility.Common
                         }
                     }
                 }
+            }
         }
 
         public static void RemoveUserByAccessToken(string accessToken)
