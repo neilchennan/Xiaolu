@@ -23,6 +23,7 @@ namespace Xiaolu.Utility.Common
 
         public static void AddAccessTokenUserId(string accessToken, string userId)
         {
+            // 此处认为在锁外读散列表不会产生并行问题。
             if (!_accessTokenUserDic.ContainsKey(accessToken))
             {
                 lock (_lock)
