@@ -29,12 +29,17 @@ namespace Xiaolu.Utility.Common
         public static string MSG_SEND_VERCODE_FAIL = "验证码发送失败。";
         public static string MSG_GEN_VERCODE_FAIL = "生成验证码失败。";
         public static string MSG_CHECK_VERCODE_FAIL = "检查验证码失败。";
+        public static string MSG_CANNOT_FIND_USER = "找不到该用户，请检查用户名或手机号是否正确";
 
         public static string MSG_USER_ID_ALREAY_EXIST = "用户Id已存在";
         public static string MSG_MOBILE_ALREAY_EXIST = "手机号已存在";
         public static string MSG_USER_ID_IS_NULL = "用户号为空";
         public static string MSG_MOBILE_IS_NULL = "手机号为空";
         public static string MSG_PASSWORD_IS_NOT_VALID = "密码不合法，必须至少6位";
+        public static string MSG_LOGIN_FAIL = "登录失败";
+        public static string MSG_LOGIN_SUCCESS = "登录成功";
+        public static string MSG_MOBILE_OR_USERID_IS_NULL = "用户Id或手机号为空";
+        public static string MSG_PASSWORD_IS_IN_CORRECT = "密码不正确";
 
         public static string MSG_INNER_EXCEPTION_INFO = "出错位置：{0}{1}--错误信息：{2}";
         public static string MSG_TOTAL_RESULT_SUMMARY = "总数 ： {0}, 成功 ： {1}, 失败 ： {2} 。";

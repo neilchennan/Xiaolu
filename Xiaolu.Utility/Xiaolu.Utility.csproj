@@ -50,6 +50,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\AccessTokenUserPool.cs" />
     <Compile Include="Common\XiaoluConstants.cs" />
     <Compile Include="Common\XiaoluResources.cs" />
     <Compile Include="Helper\ExceptionHelper.cs" />

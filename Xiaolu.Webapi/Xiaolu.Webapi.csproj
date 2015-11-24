@@ -192,6 +192,8 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\LoginTestController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\RegisterTestController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
@@ -200,6 +202,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginApiModel.cs" />
     <Compile Include="Models\RegisterApiModel.cs" />
     <Compile Include="Models\UserApiModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -336,6 +339,7 @@
     <Content Include="ThirdParty\bootstrap335\fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="Views\UsersTest\Index.cshtml" />
     <Content Include="Views\RegisterTest\Index.cshtml" />
+    <Content Include="Views\LoginTest\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

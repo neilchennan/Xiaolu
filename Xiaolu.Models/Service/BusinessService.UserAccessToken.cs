@@ -177,5 +177,12 @@ namespace Xiaolu.Models.Service
                 return new BaseActionResult(false, msg, e);
             }
         }
+
+        public static UserAccessToken GetAccessTokenByUserId(string userId4query)
+        {
+            UserAccessTokenQuery query = new UserAccessTokenQuery() { UserIdEqual = userId4query };
+            UserAccessToken uatInDb = GetUserAccessTokenListByQuery(query).FirstOrDefault();
+            return uatInDb;
+        }
     }
 }
