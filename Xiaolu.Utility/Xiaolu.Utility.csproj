@@ -55,6 +55,7 @@
     <Compile Include="Common\XiaoluResources.cs" />
     <Compile Include="Helper\ExceptionHelper.cs" />
     <Compile Include="Helper\SmsHelper.cs" />
+    <Compile Include="Helper\ValidateHelper.cs" />
     <Compile Include="Model\Interface\IXmlSupport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Result\BaseActionResult.cs" />
