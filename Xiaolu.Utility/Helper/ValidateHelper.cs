@@ -44,7 +44,7 @@ namespace Xiaolu.Utility.Helper
 
         public static bool IsValidEmail(string s)
         {
-            return Regex.IsMatch(s, Pattern4Email); 
+            return Regex.IsMatch(s, Pattern4Email);
         }
 
         #endregion 
